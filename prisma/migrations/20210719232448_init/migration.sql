@@ -1,0 +1,16 @@
+/*
+  Warnings:
+
+  - You are about to drop the column `material` on the `modelo` table. All the data in the column will be lost.
+  - A unique constraint covering the columns `[name]` on the table `Modelo` will be added. If there are existing duplicate values, this will fail.
+  - Added the required column `valor` to the `Modelo` table without a default value. This is not possible if the table is not empty.
+  - Made the column `name` on table `modelo` required. This step will fail if there are existing NULL values in that column.
+
+*/
+-- AlterTable
+ALTER TABLE `modelo` DROP COLUMN `material`,
+    ADD COLUMN `valor` INTEGER NOT NULL,
+    MODIFY `name` VARCHAR(191) NOT NULL;
+
+-- CreateIndex
+CREATE UNIQUE INDEX `Modelo.name_unique` ON `Modelo`(`name`);
